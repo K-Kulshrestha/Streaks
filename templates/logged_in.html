@@ -1,0 +1,54 @@
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Streaks</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <!-- Navigation Bar -->
+        <nav>
+            <div class="logo">
+                <h1>Streaks</h1>
+            </div>
+            <div class="navbar-links">
+                {{ email }}
+                <form action="{{ url_for('add') }}" method="GET">
+                    <button id="add-btn">Add</button>
+                </form>
+                <form action="{{ url_for('logout') }}" method="GET">
+                    <button type="submit" id="logout-btn">Logout</button>
+                </form>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Feed Page Content -->
+        {% for post in posts %}
+        <div class="post">
+            <div class="image-container">
+                <img src="{{ post.imageUrl }}" alt="Post Image">
+            </div>
+            <div class="post-info">
+                <h3>{{ post.userId }}</h3>
+                <p>{{ post.caption }}</p>
+                <p>Likes: {{ post.likes }}</p>
+                <div class="comments">
+                    {% for comment in post.comments %}
+                        <p><strong>{{ comment.username }}</strong>: {{ comment.text }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}    
+        </section>  
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add</title>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<div class="landing">
+    <div class="landing-forms">
+        <div class="landing-logo">Streaks</div>
+        <form action="" method="post">
+          <div class="login-form">
+            <div class="login-container", id="login-form">
+                <h1>Add</h1>
+                <form action="" method="post">
+                    <div class="form-group">
+                        <label for="imageUrl">Image Url</label>
+                        <input name="link" class="form-group" id="imageUrl" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Caption</label>
+                        <input type="text" name="caption" class="form-control" id="caption" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Task</label>
+                        <input type="text" name="task" class="form-control" id="task" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit">Add post</button>
+                    </div>
+                </form>
+</div>
+{% endblock %}
